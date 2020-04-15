@@ -132,6 +132,9 @@ optional<NodesAndPropInfo> processProp(core::MutableContext ctx, ast::Send *send
             // Three args. We need name, type, and either rules, or, for
             // DataInterface, a foreign type, wrapped in a thunk.
             if (auto thunk = ASTUtil::thunkBody(ctx, send->args.back().get())) {
+                if (auto e = ctx.beginError(send->args.back()->loc, core::errors::Rewriter::OldDataInterfaceSyntax)) {
+                    e.setHeader("A thunk as the third argument is no longer supported");
+                }
                 foreign = std::move(thunk);
             } else {
                 return std::nullopt;
