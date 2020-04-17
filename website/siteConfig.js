@@ -26,7 +26,7 @@ const users = [
     infoLink: 'https://chanzuckerberg.com/',
   },
   {
-    caption: 'FactorialHR',
+    caption: 'Factorial',
     image: 'img/factorial-logo.png',
     infoLink: 'https://www.factorialhr.com/',
   },
